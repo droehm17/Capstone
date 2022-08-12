@@ -1,0 +1,26 @@
+--If stored procedure exists, drop
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'customerInfo'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.customerInfo
+GO
+--Create procedure named customerInfo with parameter @lastName
+
+CREATE PROCEDURE dbo.customerInfo @lastName NVARCHAR(30)
+AS
+--Body of stored procedure
+BEGIN
+    SELECT * from customers
+    where customers.customerLastName = @lastName
+END
+GO
+--Execute stored procedure
+EXECUTE dbo.customerInfo N'Brown' 
+GO
+
+
+ 

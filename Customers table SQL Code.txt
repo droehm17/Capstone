@@ -1,0 +1,6 @@
+SELECT TOP (1000) [customerID]
+      ,[customerFirstName]
+      ,[customerLastName]
+      ,[GoldMember]
+      ,[customerAge]
+  FROM [flights].[dbo].[customers]
